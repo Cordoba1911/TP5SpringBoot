@@ -23,6 +23,19 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.21</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.24</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-envers -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
+            <version>5.4.20.Final</version>
+        </dependency>
+
     </dependencies>
 
     <build>

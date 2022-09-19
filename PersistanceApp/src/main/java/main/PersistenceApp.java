@@ -14,24 +14,33 @@ public class PersistenceApp {
         try{
             em.getTransaction().begin();
 
-            Factura factura1 = new Factura();
+            /*Factura factura1 = new Factura();
 
             factura1.setNumero(12);
             factura1.setFecha("10/08/2020");
 
-            Domicilio dom = new Domicilio("San Martin", 1222);
-            Cliente cliente = new Cliente("Pablo", "Muñoz",15245778);
+            Domicilio dom = Domicilio.builder().nombreCalle("San Martin").numero(1222).build();
+            Cliente cliente = Cliente.builder().nombre("Pablo").apellido("Muñoz").dni(15245732).build();
             cliente.setDomicilio(dom);
             dom.setCliente(cliente);
 
             factura1.setCliente(cliente);
 
-            Categoria perecederos = new Categoria("Perecederos");
-            Categoria lacteos = new Categoria("Lacteos");
-            Categoria limpieza = new Categoria("Limpieza");
+            Categoria perecederos = Categoria.builder().denominacion("Perecederos").build();
+            Categoria lacteos = Categoria.builder().denominacion("Lacteos").build();
+            Categoria limpieza = Categoria.builder().denominacion("Limpieza").build();
 
-            Articulo art1 = new Articulo(200, "Yogur Ser Frutilla", 20);
-            Articulo art2 = new Articulo(300, "Detergente Magistral", 80);
+            Articulo art1 = Articulo.builder()
+                    .cantidad(200)
+                    .denominacion("Yogurt Ser frutilla")
+                    .precio(20)
+                    .build();
+
+            Articulo art2 = Articulo.builder()
+                    .cantidad(300)
+                    .denominacion("Detergente Magistral")
+                    .precio(80)
+                    .build();
 
             art1.getCategorias().add(perecederos);
             art1.getCategorias().add(lacteos);
@@ -39,32 +48,12 @@ public class PersistenceApp {
             perecederos.getArticulos().add(art1);
 
             art2.getCategorias().add(limpieza);
-            limpieza.getArticulos().add(art2);
+            limpieza.getArticulos().add(art2);*/
 
-            DetalleFactura det1 = new DetalleFactura();
+            Factura factura1 = em.find(Factura.class, 1L);
+            factura1.setNumero(85);
 
-            det1.setArticulo(art1);
-            det1.setCantidad(2);
-            det1.setSubtotal(40);
-
-            art1.getDetfactura().add(det1);
-            factura1.getDetalles().add(det1);
-            det1.setFactura(factura1);
-
-            DetalleFactura det2 = new DetalleFactura();
-
-            det2.setArticulo(art2);
-            det2.setCantidad(1);
-            det2.setSubtotal(80);
-
-            art2.getDetfactura().add(det2);
-            factura1.getDetalles().add(det2);
-            det2.setFactura(factura1);
-
-            factura1.setTotal(120);
-
-            em.persist(factura1);
-
+            em.merge(factura1);
             em.flush();
 
             em.getTransaction().commit();
