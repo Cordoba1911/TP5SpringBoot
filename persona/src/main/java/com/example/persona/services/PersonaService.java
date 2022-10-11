@@ -1,2 +1,2 @@
-package com.example.persona.services;public class PersonaService {
+package com.example.persona.services;public interface PersonaService {
 }
