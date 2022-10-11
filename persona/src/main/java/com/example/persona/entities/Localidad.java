@@ -1,14 +1,24 @@
-package com.example.persona.entities.audit;
+package com.example.persona.entities;
+
+import com.example.persona.entities.audit.Base;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
 @Table(name = "Localidad")
-public class Localidad implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Audited
+public class Localidad extends Base {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Column(name = "denominacion")
     private String denominacion;
 }

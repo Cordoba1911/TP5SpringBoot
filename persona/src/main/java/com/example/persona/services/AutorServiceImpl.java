@@ -7,12 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AutorService extends BaseServiceImpl<Autor, Long> {
+public class AutorServiceImpl extends BaseServiceImpl<Autor, Long> implements AutorService {
 
     @Autowired
     private AutorRepository autorRepository;
 
-    public AutorService(BaseRepository<Autor, Long> baseRepository) {
+    public AutorServiceImpl(BaseRepository<Autor, Long> baseRepository) {
         super(baseRepository);
     }
 }
